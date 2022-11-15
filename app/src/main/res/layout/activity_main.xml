@@ -9,7 +9,7 @@
     <com.github.ameen.dottylib.Dotty
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:dotty_count="5"
+        app:dottyStartPosition="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

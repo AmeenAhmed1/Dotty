@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="DottyLayout">
-        <attr name="dotty_count" format="integer" />
-        <attr name="dotty_un_selected" format="reference" />
-        <attr name="dotty_selected" format="reference" />
+        <attr name="dottyCount" format="integer" />
+        <attr name="dottyUnSelected" format="integer" />
+        <attr name="dottySelected" format="integer" />
+        <attr name="dottyStartPosition" format="integer" />
+        <attr name="dottySize" format="dimension" />
+        <attr name="dottySpaceBetweenSize" format="dimension" />
     </declare-styleable>
 </resources>

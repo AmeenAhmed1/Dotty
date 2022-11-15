@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import com.github.ameen.dottylib.util.*
 
 class Dotty @JvmOverloads constructor(
     context: Context,
@@ -13,6 +14,10 @@ class Dotty @JvmOverloads constructor(
 
     private var dottyCount: Int = 0
     private var selectedPosition: Int = 0
+    private var dottySize: Float = 0f
+    private var dottySpaceBetween: Float = 0f
+    private var dottySelectedDrawable: Int = 0
+    private var dottyUnSelectedDrawable: Int = 0
 
     init {
         initDotty(context, attrs)
@@ -20,22 +25,41 @@ class Dotty @JvmOverloads constructor(
 
     @SuppressLint("CustomViewStyleable")
     private fun initDotty(context: Context, attrs: AttributeSet?) {
-        if (attrs != null) {
 
-            val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.DottyLayout)
+        val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.DottyLayout)
 
-            try {
-                dottyCount = attributeArray.getInt(R.styleable.DottyLayout_dotty_count, 3)
-            } finally {
-                attributeArray.recycle()
-            }
-            updateIndicators()
-        }
+        dottyCount = attributeArray.getInt(R.styleable.DottyLayout_dottyCount, defaultDotCount)
+
+        dottySpaceBetween =
+            attributeArray.getDimension(
+                R.styleable.DottyLayout_dottySpaceBetweenSize,
+                defaultDotSpaceBetween
+            )
+
+        dottySize =
+            attributeArray.getDimension(R.styleable.DottyLayout_dottySize, defaultDotSize)
+
+        selectedPosition = attributeArray.getInt(
+            R.styleable.DottyLayout_dottyStartPosition,
+            defaultSelectedPosition
+        )
+
+        dottySelectedDrawable = attributeArray.getInt(
+            R.styleable.DottyLayout_dottySelected,
+            defaultSelectedBackgroundDrawable
+        )
+
+        dottyUnSelectedDrawable = attributeArray.getInt(
+            R.styleable.DottyLayout_dottyUnSelected,
+            defaultUnSelectedBackgroundDrawable
+        )
+
+        attributeArray.recycle()
+
+        updateIndicators()
+
     }
 
-    private fun px(dpValue: Float): Int {
-        return (dpValue * context.resources.displayMetrics.density).toInt()
-    }
 
     @SuppressLint("ResourceType")
     private fun updateIndicators() {
@@ -43,13 +67,20 @@ class Dotty @JvmOverloads constructor(
         for (i in 0 until dottyCount) {
             val indicator = View(context)
             // setting indicator layout margin
-            val layoutParams = LayoutParams(px(10f), px(10f))
-            layoutParams.setMargins(px(3f), px(3f), px(3f), px(3f))
+            val layoutParams = LayoutParams(dottySize.toPx(context), dottySize.toPx(context))
+            layoutParams.setMargins(
+                dottySpaceBetween.toPx(context), //Left
+                0f.toPx(context), //Top
+                dottySpaceBetween.toPx(context), //Right
+                0f.toPx(context)  //Bottom
+            )
             indicator.layoutParams = layoutParams
-            indicator.setBackgroundResource(R.drawable.default_drawable)
+            indicator.setBackgroundResource(dottyUnSelectedDrawable)
             // add the view to indicator layout
             addView(indicator)
         }
+
+        selectPosition()
     }
 
     fun setIndicatorCount(count: Int) {
@@ -65,12 +96,24 @@ class Dotty @JvmOverloads constructor(
                 val indicator = getChildAt(index)
                 if (index == selectedPosition) {
 //                    indicator.setBackgroundResource(R.drawable.default_drawable)
-                    indicator.setBackgroundResource(R.styleable.DottyLayout_dotty_selected)
+                    indicator.setBackgroundResource(R.styleable.DottyLayout_dottySelected)
                 } else {
 //                    indicator.setBackgroundResource(R.drawable.default_drawable)
-                    indicator.setBackgroundResource(R.styleable.DottyLayout_dotty_un_selected)
+                    indicator.setBackgroundResource(R.styleable.DottyLayout_dottyUnSelected)
                 }
             }
         }
+    }
+
+    @SuppressLint("ResourceType")
+    fun selectPosition() {
+        if (selectedPosition in 0 until dottyCount) {
+            val indicator = getChildAt(selectedPosition)
+            indicator.setBackgroundResource(dottySelectedDrawable)
+        } else {
+            val indicator = getChildAt(dottyCount - 1)
+            indicator.setBackgroundResource(dottySelectedDrawable)
+        }
+
     }
 }
