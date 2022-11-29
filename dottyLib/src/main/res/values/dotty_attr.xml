@@ -2,8 +2,8 @@
 <resources>
     <declare-styleable name="DottyLayout">
         <attr name="dottyCount" format="integer" />
-        <attr name="dottyUnSelected" format="integer" />
-        <attr name="dottySelected" format="integer" />
+        <attr name="dottyUnSelected" format="reference" />
+        <attr name="dottySelected" format="reference" />
         <attr name="dottyStartPosition" format="integer" />
         <attr name="dottySize" format="dimension" />
         <attr name="dottySpaceBetweenSize" format="dimension" />

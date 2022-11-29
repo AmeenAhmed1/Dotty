@@ -7,8 +7,9 @@
     tools:context=".MainActivity">
 
     <com.github.ameen.dottylib.Dotty
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         app:dottyStartPosition="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

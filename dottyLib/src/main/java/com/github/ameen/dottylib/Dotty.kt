@@ -114,6 +114,5 @@ class Dotty @JvmOverloads constructor(
             val indicator = getChildAt(dottyCount - 1)
             indicator.setBackgroundResource(dottySelectedDrawable)
         }
-
     }
 }
