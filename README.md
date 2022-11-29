@@ -1,19 +1,23 @@
 [![](https://jitpack.io/v/AmeenAhmed1/Dotty.svg)](https://jitpack.io/#AmeenAhmed1/Dotty)
 
-<h1>Install Dotty to your project.</h1>
+# <div style="text-align: center;"> A Minimal Lib for creating an indicator </div>
+
+# <h1>Install Dotty to your project.</h1>
 
 Add the dependency below to your module's `build.gradle` file:
 
-```
-	dependencies {
-	        implementation 'com.github.AmeenAhmed1:Dotty:1.0.0'
-	}
+```groovy
+    dependencies {
+    implementation 'com.github.AmeenAhmed1:Dotty:1.0.0'
+}
 ```
 
-<h2>How to use</h2>
-You can use it in your XML like code below it will shows up with the default drawables styles.
+# <h2>How to use</h2>
+
+You can use it in your XML like code below it will show up with the default drawables styles.
 
 ```xml
+
 <com.github.ameen.dottylib.Dotty
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -22,6 +26,7 @@ You can use it in your XML like code below it will shows up with the default dra
 You can change the Dotty layout
 
 ```xml
+
 <com.github.ameen.dottylib.Dotty
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +38,7 @@ You can change the Dotty layout
         app:dottyStartPosition="3"/>
 ```
 
-<img src=screens/screenrecord.gif width="50%" height="50%"/>
+<div style="text-align: center;"> <img src=screens/screenrecord.gif width="20%" height="20%"/> </div>
 
 
 <h2>Dotty Attributes (Style)</h2>
