@@ -38,6 +38,16 @@ You can change the Dotty layout
         app:dottyStartPosition="3"/>
 ```
 
+# <h2>How to handle Dotty selection within the Code</h2>
+
+```kotlin
+//Provide your steps counter.
+binding.dotty.setIndicatorCount(adapter.itemCount)
+
+//Provide selected position.
+binding.dotty.selectCurrentPosition(position)
+```
+
 <div style="text-align: center;"> <img src=screens/screenrecord.gif width="20%" height="20%"/> </div>
 
 
