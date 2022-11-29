@@ -35,6 +35,9 @@ You can change the Dotty layout
         app:dottyStartPosition="3"/>
 ```
 
+<img src=screens/screenrecord.gif width="50%" height="50%"/>
+
+
 <h2>Dotty Attributes (Style)</h2>
 
 | Attribute                 |                Description                 |        Default         |
